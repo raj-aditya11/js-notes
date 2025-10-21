@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: #fff;">   
+</body>
+<script>
+    const requestUrl = "https://api.github.com/users/raj-aditya11"
+    const xhr = new XMLHttpRequest();              //sends an AJAX request
+    xhr.open('GET', requestUrl);                  //opens xhr but doesn't call
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState)                //readystate gives the code
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText);
+            console.log(typeof data);             //most of the times it is string but sometimes it comes out to be object, hence we change it to json in order to access the data within and use it
+            console.log(data.public_repos)
+        }
+    }                     
+    xhr.send();                           //calls xhr
+</script>
+</html>
