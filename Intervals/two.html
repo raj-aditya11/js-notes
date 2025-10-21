@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai or Code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    //using setTimeout()
+    setTimeout(function(){
+        console.log("setTimeout used, time duration 2 seconds")
+    }, 2000)             //time is passed in miliseconds
+
+    const code = function(){
+        console.log("The code is 12345");
+    }
+    const clear = setTimeout(code, 3000)
+
+    const changeText = function(){
+        document.querySelector("h1").innerHTML = "Learning JS"
+    }
+    setTimeout(changeText, 2000)
+
+    //using clearTimeout()
+    //clearTimeout(clear)                      //prevents setTimeout() from acting
+    document.querySelector("#stop").addEventListener("click",function(e){
+        clearTimeout(clear)
+        console.log("button clicked")
+    })
+</script>
+</html>
