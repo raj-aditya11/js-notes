@@ -21,7 +21,7 @@ new Promise(function(resolve, reject){
     setTimeout(function(){
         console.log("Async task 2");
         resolve();
-    }, 2000)
+    }, 1000)
 }).then(function(){
     console.log("Async 2 resolved");
 })
@@ -31,7 +31,7 @@ new Promise(function(resolve, reject){
 const promiseThree = new Promise(function(resolve, reject){
     setTimeout(function(){
         resolve({username: "John", email: "john@doe.com"})                   //generally we pass objects to resolve 
-    }, 3000)
+    }, 1000)
 })
 promiseThree.then(function(user){
     console.log(user);
@@ -47,7 +47,7 @@ const promiseFour = new Promise(function(resolve, reject){
         }else{
             reject("ERROR: Something went wrong");
         }
-    }, 4000)
+    }, 1000)
 })
 promiseFour
 .then((user) => {
@@ -76,7 +76,7 @@ const promiseFive = new Promise(function(resolve, reject){
         }else{
             reject("Error: js went wrong");
         }
-    }, 5000)
+    }, 1000)
 })
 
 async function consumePromiseFive(){
@@ -90,16 +90,6 @@ async function consumePromiseFive(){
 }
 consumePromiseFive();
 
-fetch("https://jsonplaceholder.typicode.com/todos/1")
-.then((response) => {
-    return response.json();
-})
-.then((data) => {
-    console.log(data);
-})
-.catch((error) => {
-    console.log(error)
-})
 
 async function getAllUsers(){
     try {
@@ -111,3 +101,29 @@ async function getAllUsers(){
     }
 }
 getAllUsers();
+
+
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+.then((response) => {
+    return response.json();
+})
+.then((data) => {
+    console.log(data);
+})
+.catch((error) => {
+    console.log(error)
+})
+
+//fetch
+/*
+1)Data:
+    reserves memory in space
+    has two arrays:
+        -on fulfilled[](resolve)      
+        -on rejection[](reject)      //we cannot append to any of these
+
+    web browser/node
+        gives a network request
+            -if there is any response then it goes to resolve(even errors like 404)
+            -else it goes to reject
+*/
